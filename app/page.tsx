@@ -1,61 +1,89 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 const Home = () => {
-  const [active, setActive] = useState(0);
+  // Tüm mevcut resimleri bir array'de tutuyoruz
+  const images = useMemo(() => Array.from({ length: 10 }, (_, i) => `/${i}.jpg`), []);
+
+  // State yönetimi
+  const [activeImage, setActiveImage] = useState("");
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    // Server ve client arasındaki hydration uyumsuzluğunu önlemek için
-    // Component mount olduktan sonra random sayıyı set et
-    setActive(Math.floor(Math.random() * 10));
-  }, []);
+    // Sayfa yüklendiğinde rastgele resim seç
+    const selectRandomImage = () => {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      setActiveImage(images[randomIndex]);
+    };
+
+    // Component mount olduğunda rastgele resim seç
+    selectRandomImage();
+
+    // Optional: Belirli bir sürede bir resim değiştirmek için
+    const interval = setInterval(selectRandomImage, 30000); // Her 30 saniyede bir
+
+    // Cleanup
+    return () => clearInterval(interval);
+  }, [images]);
 
   return (
     <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col">
       <div className="relative z-10 flex flex-col items-center gap-10 p-20">
         <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
-        <button className="flex items-center gap-3 bg-[#e3e4e6] py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
-          <Image 
-            alt="Apple Logo" 
-            src="/apple.svg" 
-            width={30} 
-            height={30} 
-          />
+
+        <p className="font-bold text-5xl text-[#e3e4e6] tracking-wider text-center max-w-3xl">
+          Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!
+        </p>
+        <p className="font-semibold text-xl text-[#e3e4e6] text-center max-w-3xl">
+          Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi
+          anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet
+          gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için
+          şimdi keşfedin!
+        </p>
+        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
+          <Image alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
           Download for IOS
         </button>
-        
-        <button className="flex items-center gap-3 bg-[#e3e4e6] py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
-          <Image 
-            alt="Apple Logo" 
-            src="/apple.svg" 
-            width={30} 
-            height={30} 
+        <footer className="flex flex-col items-center gap-2">
+          <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
+          <div className="flex gap-5">
+            {["App Store", "İletişim", "X", "Privecy Policy", "Terms of Use"].map((item, index) => (
+              <p className="text-[#e3e4e6]" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
+          <div className="flex gap-5">
+            <p className="text-[#979699]">Enes Demirci</p>
+            <p className="text-[#979699]">©2025</p>
+          </div>
+        </footer>
+      </div>
+
+      {/* Background Image with preload and fade transition */}
+      {activeImage && (
+        <div
+          className={`fixed w-full h-full inset-0 transition-opacity duration-500 ${
+            imageLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src={activeImage}
+            alt="Background Image"
+            fill
+            priority
+            quality={85}
+            sizes="100vw"
+            className="object-cover object-center "
+            onLoad={() => setImageLoaded(true)}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx0fHRsdHSIfHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR3/2wBDAR4SEhQdFB4lGhQaJSEeISUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSUlJSX/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
           />
-          Download for IOS
-        </button>
-        <p>Pao</p>
-      </div>
+        </div>
+      )}
 
-      {/* Background Image with fade transition */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-500 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-      >
-        <Image
-          src={`/${active}.jpg`}
-          alt="Background Image"
-          fill
-          priority
-          quality={100}
-          sizes="100vw"
-          className="object-cover object-center"
-          onLoadingComplete={() => setImageLoaded(true)}
-        />
-      </div>
-
+      {/* Noise effect overlay */}
       <svg
         className="pointer-events-none fixed isolate z-50 mix-blend-soft-light"
         width="100%"
@@ -72,7 +100,8 @@ const Home = () => {
         <rect width="100%" height="100%" filter="url(#noise)" />
       </svg>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
+      {/* Gradient overlay */}
+      <div className="fixed inset-0 w-full h-full bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
     </div>
   );
 };
