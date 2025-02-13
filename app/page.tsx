@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
-
+import first from "@/public/first.png";
+import second from "@/public/second.png";
 const Home = () => {
   // Tüm mevcut resimleri bir array'de tutuyoruz
   const images = useMemo(() => Array.from({ length: 10 }, (_, i) => `/${i}.jpg`), []);
@@ -28,36 +29,42 @@ const Home = () => {
   }, [images]);
 
   return (
-    <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col">
+    <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col font-next-mono">
       <div className="relative z-10 flex flex-col items-center gap-10 p-20">
+        <div className="flex items-center gap-5">
+          <Image alt="Pao Planner Logo" src="/logo.svg" className="rounded-lg" width={60} height={60}/>
         <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
+        </div>
 
         <p className="font-bold text-5xl text-[#e3e4e6] tracking-wider text-center max-w-3xl">
           Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!
         </p>
+        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
+          <Image alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
+          Download for IOS
+        </button>
+        <Image alt="" src={first} className="object-cover" width={1000} height={500} />
+        <Image alt="" src={second} className="object-cover" width={1000} height={500} />
         <p className="font-semibold text-xl text-[#e3e4e6] text-center max-w-3xl">
           Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi
           anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet
           gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için
           şimdi keşfedin!
         </p>
-        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
-          <Image alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
-          Download for IOS
-        </button>
+
         <footer className="flex flex-col items-center gap-2">
           <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
           <div className="flex gap-5">
             {["App Store", "İletişim", "X", "Privecy Policy", "Terms of Use"].map((item, index) => (
-              <p className="text-[#e3e4e6]" key={index}>
+              <a className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer" key={index}>
                 {item}
-              </p>
+              </a>
             ))}
           </div>
-          <div className="flex gap-5">
-            <p className="text-[#979699]">Enes Demirci</p>
-            <p className="text-[#979699]">©2025</p>
-          </div>
+          <a href="https://enesdmc.com" target="_blank" className="flex gap-5 ">
+            <p className="text-[#979699] hover:underline font-semibold">Enes Demirci</p>
+            <p className="text-[#979699] hover:underline font-semibold">© 2025</p>
+          </a>
         </footer>
       </div>
 
