@@ -2,29 +2,23 @@
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import first from "@/public/first.png";
-import second from "@/public/second.png";
+import Link from "next/link";
 const Home = () => {
-  // Tüm mevcut resimleri bir array'de tutuyoruz
   const images = useMemo(() => Array.from({ length: 10 }, (_, i) => `/${i}.jpg`), []);
 
-  // State yönetimi
   const [activeImage, setActiveImage] = useState("");
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    // Sayfa yüklendiğinde rastgele resim seç
     const selectRandomImage = () => {
       const randomIndex = Math.floor(Math.random() * images.length);
       setActiveImage(images[randomIndex]);
     };
 
-    // Component mount olduğunda rastgele resim seç
     selectRandomImage();
 
-    // Optional: Belirli bir sürede bir resim değiştirmek için
-    const interval = setInterval(selectRandomImage, 30000); // Her 30 saniyede bir
+    const interval = setInterval(selectRandomImage, 30000);
 
-    // Cleanup
     return () => clearInterval(interval);
   }, [images]);
 
@@ -32,8 +26,14 @@ const Home = () => {
     <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col font-next-mono">
       <div className="relative z-10 flex flex-col items-center gap-10 p-20">
         <div className="flex items-center gap-5">
-          <Image alt="Pao Planner Logo" src="/logo.svg" className="rounded-lg" width={60} height={60}/>
-        <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
+          <Image
+            alt="Pao Planner Logo"
+            src="/logo.svg"
+            className="rounded-lg"
+            width={60}
+            height={60}
+          />
+          <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
         </div>
 
         <p className="font-bold text-5xl text-[#e3e4e6] tracking-wider text-center max-w-3xl">
@@ -43,8 +43,9 @@ const Home = () => {
           <Image alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
           Download for IOS
         </button>
-        <Image alt="" src={first} className="object-cover" width={1000} height={500} />
-        <Image alt="" src={second} className="object-cover" width={1000} height={500} />
+          {/* <Image alt="" src={second} width={700} height={1000} /> */}
+          {/* <Image alt="" src={first}  width={700} height={1000} /> */}
+          <Image alt="" src={first} width={1000} height={1000} />
         <p className="font-semibold text-xl text-[#e3e4e6] text-center max-w-3xl">
           Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi
           anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet
@@ -55,11 +56,32 @@ const Home = () => {
         <footer className="flex flex-col items-center gap-2">
           <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
           <div className="flex gap-5">
-            {["App Store", "İletişim", "X", "Privecy Policy", "Terms of Use"].map((item, index) => (
-              <a className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer" key={index}>
-                {item}
-              </a>
-            ))}
+            <a
+              target="_blank"
+              href=""
+              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+            >
+              App Store
+            </a>
+            <a
+              target="_blank"
+              href="mailto:enesdmc@icloud.com"
+              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+            >
+              İletişim
+            </a>
+            <Link
+              href="/privacy-policy"
+              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+            >
+              Privecy Policy
+            </Link>
+            <Link
+              href="/terms-of-use"
+              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+            >
+              Terms of Use
+            </Link>
           </div>
           <a href="https://enesdmc.com" target="_blank" className="flex gap-5 ">
             <p className="text-[#979699] hover:underline font-semibold">Enes Demirci</p>
