@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 import first from "@/public/first.png";
-import Link from "next/link";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 const Home = () => {
   const images = useMemo(() => Array.from({ length: 10 }, (_, i) => `/${i}.jpg`), []);
 
@@ -25,30 +26,28 @@ const Home = () => {
   return (
     <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col font-next-mono">
       <div className="relative z-10 flex flex-col items-center gap-8 md:gap-10 p-5 sm:p-10 md:p-16">
-        <div className="flex items-center gap-5">
-          <Image
-            alt="Pao Planner Logo"
-            src="/logo.svg"
-            className="rounded-lg hidden md:block"
-            width={60}
-            height={60}
-          />
-           <Image
-            alt="Pao Planner Logo"
-            src="/logo.svg"
-            className="rounded-lg block md:hidden"
-            width={40}
-            height={40}
-          />
-          <h1 className="font-bold md:text-2xl text-[#e3e4e6]">Pao Planner</h1>
-        </div>
+        <Header />
 
         <p className=" font-bold text-xl sm:text-3xl md:text-4xl text-[#e3e4e6] md:tracking-wider text-center max-w-3xl">
           Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!
         </p>
         <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
-          <Image className="hidden md:block" alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
-          <Image className="block md:hidden" alt="Apple Logo" src="/apple.svg" width={20} height={20} priority={true} />
+          <Image
+            className="hidden md:block"
+            alt="Apple Logo"
+            src="/apple.svg"
+            width={30}
+            height={30}
+            priority={true}
+          />
+          <Image
+            className="block md:hidden"
+            alt="Apple Logo"
+            src="/apple.svg"
+            width={20}
+            height={20}
+            priority={true}
+          />
           Download for IOS
         </button>
         {/* <Image alt="" src={second} width={700} height={1000} /> */}
@@ -61,45 +60,7 @@ const Home = () => {
           şimdi keşfedin!
         </p>
 
-        <footer className="flex flex-col items-center gap-2">
-          <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
-          <div className="flex gap-3 md:gap-5">
-            <a
-              target="_blank"
-              href=""
-              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
-            >
-              App Store
-            </a>
-            <a
-              target="_blank"
-              href="mailto:enesdmc@icloud.com"
-              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
-            >
-              İletişim
-            </a>
-            <Link
-              href="/privacy-policy"
-              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
-            >
-              Privecy Policy
-            </Link>
-            <Link
-              href="/terms-of-use"
-              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
-            >
-              Terms of Use
-            </Link>
-          </div>
-          <a href="https://enesdmc.com" target="_blank" className="flex gap-5 ">
-            <p className="text-xs sm:text-sm text-[#979699] hover:underline font-semibold">
-              Enes Demirci
-            </p>
-            <p className="text-xs sm:text-sm text-[#979699] hover:underline font-semibold">
-              © 2025
-            </p>
-          </a>
-        </footer>
+        <Footer />
       </div>
 
       {/* Background Image with preload and fade transition */}

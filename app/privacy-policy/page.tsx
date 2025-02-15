@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const data = [
   {
@@ -48,18 +48,9 @@ const data = [
 const PrivacyPolicy = () => {
   return (
     <div className="relative bg-[#0a0a0a] text-[#e3e4e6]  flex flex-col font-next-sans">
-      <div className="relative z-10 flex flex-col items-center gap-10 p-20 max-w-4xl mx-auto">
-        <Link href="/" className="flex items-center gap-5">
-          <Image
-            alt="Pao Planner Logo"
-            src="/logo.svg"
-            className="rounded-lg"
-            width={60}
-            height={60}
-          />
-          <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
-        </Link>
-        <div className="text-sm">
+      <div className="relative z-10 flex flex-col items-center gap-8 md:gap-10 p-5 sm:p-10 md:p-16 max-w-4xl mx-auto">
+        <Header />
+        <div className="text-xs md:text-sm">
           <h2 className="font-bold">Gizlilik Politikası (Privacy Policy)</h2>
           <p className="mt-8">
             Bu Gizlilik Politikası, Pao Planner uygulamasını kullanan kullanıcıların kişisel
@@ -80,23 +71,7 @@ const PrivacyPolicy = () => {
           ))}
         </div>
 
-        <footer className="flex flex-col items-center gap-2">
-          <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
-          <div className="flex gap-5">
-            {["App Store", "İletişim", "X", "Privecy Policy", "Terms of Use"].map((item, index) => (
-              <a
-                className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
-                key={index}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-          <a href="https://enesdmc.com" target="_blank" className="flex gap-5 ">
-            <p className="text-[#979699] hover:underline font-semibold">Enes Demirci</p>
-            <p className="text-[#979699] hover:underline font-semibold">© 2025</p>
-          </a>
-        </footer>
+        <Footer />
       </div>
 
       <svg
