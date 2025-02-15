@@ -24,29 +24,37 @@ const Home = () => {
 
   return (
     <div className="relative h-screen w-full bg-[#0a0a0a] flex flex-col font-next-mono">
-      <div className="relative z-10 flex flex-col items-center gap-10 p-20">
+      <div className="relative z-10 flex flex-col items-center gap-8 md:gap-10 p-5 sm:p-10 md:p-16">
         <div className="flex items-center gap-5">
           <Image
             alt="Pao Planner Logo"
             src="/logo.svg"
-            className="rounded-lg"
+            className="rounded-lg hidden md:block"
             width={60}
             height={60}
           />
-          <h1 className="font-bold text-2xl text-[#e3e4e6]">Pao Planner</h1>
+           <Image
+            alt="Pao Planner Logo"
+            src="/logo.svg"
+            className="rounded-lg block md:hidden"
+            width={40}
+            height={40}
+          />
+          <h1 className="font-bold md:text-2xl text-[#e3e4e6]">Pao Planner</h1>
         </div>
 
-        <p className="font-bold text-5xl text-[#e3e4e6] tracking-wider text-center max-w-3xl">
+        <p className=" font-bold text-xl sm:text-3xl md:text-4xl text-[#e3e4e6] md:tracking-wider text-center max-w-3xl">
           Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!
         </p>
-        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-6 rounded-xl font-bold text-xl text-[#33363d]">
-          <Image alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
+        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
+          <Image className="hidden md:block" alt="Apple Logo" src="/apple.svg" width={30} height={30} priority={true} />
+          <Image className="block md:hidden" alt="Apple Logo" src="/apple.svg" width={20} height={20} priority={true} />
           Download for IOS
         </button>
-          {/* <Image alt="" src={second} width={700} height={1000} /> */}
-          {/* <Image alt="" src={first}  width={700} height={1000} /> */}
-          <Image alt="" src={first} width={1000} height={1000} />
-        <p className="font-semibold text-xl text-[#e3e4e6] text-center max-w-3xl">
+        {/* <Image alt="" src={second} width={700} height={1000} /> */}
+        {/* <Image alt="" src={first}  width={700} height={1000} /> */}
+        <Image alt="" src={first} width={1000} height={1000} />
+        <p className="font-semibold sm:text-lg md:text-xl text-[#e3e4e6] text-center max-w-3xl">
           Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi
           anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet
           gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için
@@ -55,37 +63,41 @@ const Home = () => {
 
         <footer className="flex flex-col items-center gap-2">
           <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
-          <div className="flex gap-5">
+          <div className="flex gap-3 md:gap-5">
             <a
               target="_blank"
               href=""
-              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
             >
               App Store
             </a>
             <a
               target="_blank"
               href="mailto:enesdmc@icloud.com"
-              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
             >
               İletişim
             </a>
             <Link
               href="/privacy-policy"
-              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
             >
               Privecy Policy
             </Link>
             <Link
               href="/terms-of-use"
-              className="text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
+              className="text-xs sm:text-sm text-[#e3e4e6] hover:underline hover:text-[#979699] font-semibold cursor-pointer"
             >
               Terms of Use
             </Link>
           </div>
           <a href="https://enesdmc.com" target="_blank" className="flex gap-5 ">
-            <p className="text-[#979699] hover:underline font-semibold">Enes Demirci</p>
-            <p className="text-[#979699] hover:underline font-semibold">© 2025</p>
+            <p className="text-xs sm:text-sm text-[#979699] hover:underline font-semibold">
+              Enes Demirci
+            </p>
+            <p className="text-xs sm:text-sm text-[#979699] hover:underline font-semibold">
+              © 2025
+            </p>
           </a>
         </footer>
       </div>
@@ -93,7 +105,7 @@ const Home = () => {
       {/* Background Image with preload and fade transition */}
       {activeImage && (
         <div
-          className={`fixed w-full h-full inset-0 transition-opacity duration-500 ${
+          className={`fixed size-full inset-0 transition-opacity duration-500 ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -114,7 +126,7 @@ const Home = () => {
 
       {/* Noise effect overlay */}
       <svg
-        className="pointer-events-none fixed isolate z-50 mix-blend-soft-light"
+        className="pointer-events-none fixed isolate z-50 mix-blend-soft-light size-full"
         width="100%"
         height="100%"
       >
@@ -130,7 +142,7 @@ const Home = () => {
       </svg>
 
       {/* Gradient overlay */}
-      <div className="fixed inset-0 w-full h-full bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
+      <div className="fixed inset-0 size-full bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
     </div>
   );
 };
