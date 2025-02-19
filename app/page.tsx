@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
-import first from "@/public/first.png";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 const Home = () => {
@@ -29,7 +28,7 @@ const Home = () => {
         <Header />
 
         <p className=" font-bold text-xl sm:text-3xl md:text-4xl text-[#e3e4e6] md:tracking-wider text-center max-w-3xl">
-          Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!
+          {texts.text1}
         </p>
         <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
           <Image
@@ -50,14 +49,9 @@ const Home = () => {
           />
           Download for IOS
         </button>
-        {/* <Image alt="" src={second} width={700} height={1000} /> */}
-        {/* <Image alt="" src={first}  width={700} height={1000} /> */}
-        <Image alt="" src={first} width={1000} height={1000} />
+        <Image alt="Pao Planner Phone Image" src="/phone.png" width={800} height={800} />
         <p className="font-semibold sm:text-lg md:text-xl text-[#e3e4e6] text-center max-w-3xl">
-          Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi
-          anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet
-          gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için
-          şimdi keşfedin!
+          {texts.text2}
         </p>
 
         <Footer />
@@ -109,3 +103,9 @@ const Home = () => {
 };
 
 export default Home;
+
+const texts = {
+  text1: "Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!",
+  text2:
+    "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!",
+};
