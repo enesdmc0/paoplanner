@@ -1,10 +1,7 @@
 import { MetadataRoute } from "next";
+import { defaultUrl, sitemapUrl } from "@/constants";
 
-/**
- * Web sitesinin robots.txt dosyasını yapılandıran fonksiyon
- * @description Arama motoru botları için erişim kurallarını ve site haritasını tanımlar
- * @returns {MetadataRoute.Robots} Robots.txt yapılandırma nesnesi
- */
+
 export default function robots(): MetadataRoute.Robots {
     return {
         rules: [
@@ -22,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: "/search",
             },
         ],
-        sitemap: "https://paoplanner.com/sitemap.xml",
-        host: "https://paoplanner.com",
+        sitemap: sitemapUrl,
+        host: defaultUrl,
     };
 }

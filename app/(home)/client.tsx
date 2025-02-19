@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-const Home = () => {
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { homeData } from "@/constants";
+
+export const HomeClient = () => {
   const images = useMemo(() => Array.from({ length: 10 }, (_, i) => `/${i}.jpg`), []);
 
   const [activeImage, setActiveImage] = useState("");
@@ -28,7 +30,7 @@ const Home = () => {
         <Header />
 
         <p className=" font-bold text-xl sm:text-3xl md:text-4xl text-[#e3e4e6] md:tracking-wider text-center max-w-3xl">
-          {texts.text1}
+          {homeData.text1}
         </p>
         <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
           <Image
@@ -51,7 +53,7 @@ const Home = () => {
         </button>
         <Image alt="Pao Planner Phone Image" src="/phone.png" width={800} height={800} />
         <p className="font-semibold sm:text-lg md:text-xl text-[#e3e4e6] text-center max-w-3xl">
-          {texts.text2}
+          {homeData.text2}
         </p>
 
         <Footer />
@@ -100,12 +102,4 @@ const Home = () => {
       <div className="fixed inset-0 size-full bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
     </div>
   );
-};
-
-export default Home;
-
-const texts = {
-  text1: "Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!",
-  text2:
-    "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!",
 };

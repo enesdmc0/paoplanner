@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
 
-const Header = () => {
+export const Header = () => {
   return (
     <Link href="/" className="flex items-center gap-5">
       <Image
@@ -23,5 +22,3 @@ const Header = () => {
     </Link>
   );
 };
-
-export default Header;

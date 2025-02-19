@@ -1,22 +1,23 @@
 import { MetadataRoute } from "next";
+import { defaultUrl, privacyPolicyUrl, termsOfUseUrl } from "@/constants";
 
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: 'https://paoplanner.com',
+            url: defaultUrl,
             lastModified: new Date(),
             changeFrequency: 'yearly',
             priority: 1,
         },
         {
-            url: 'https://paoplanner.com/privacy-policy',
+            url: privacyPolicyUrl,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.9,
         },
         {
-            url: 'https://paoplanner.com/terms-of-use',
+            url: termsOfUseUrl,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.9,

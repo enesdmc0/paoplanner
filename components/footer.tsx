@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="flex flex-col items-center gap-2">
       <p className="text-[#e3e4e6] font-bold">Pao Planner</p>
@@ -41,5 +41,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;
