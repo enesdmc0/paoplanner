@@ -1,6 +1,48 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { privacyPolicyData } from "@/constants";
+import { defaultUrl, META_DATA, privacyPolicyData } from "@/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: META_DATA.privacyPolicy.title,
+  description: META_DATA.privacyPolicy.description.slice(0, 160),
+  alternates: {
+    canonical: META_DATA.privacyPolicy.canonical,
+  },
+  openGraph: {
+    title: META_DATA.privacyPolicy.title,
+    description: META_DATA.privacyPolicy.description,
+    url: META_DATA.privacyPolicy.canonical,
+    siteName: META_DATA.privacyPolicy.siteName,
+    images: [
+      {
+        url: `${defaultUrl}/og-image.jpeg`,
+        width: 1200,
+        height: 630,
+        alt: META_DATA.privacyPolicy.siteName,
+      },
+    ],
+    locale: "tr_TR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: META_DATA.privacyPolicy.title,
+    description: META_DATA.privacyPolicy.description,
+    images: [`${defaultUrl}/og-image.jpeg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 const PrivacyPolicy = () => {
   return (

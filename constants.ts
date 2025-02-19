@@ -5,7 +5,7 @@ export const sitemapUrl = `${defaultUrl}/sitemap.xml`;
 
 export const siteName = "Pao Planner";
 export const siteDescription =
-    "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!";
+  "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!";
 export const authorName = "Enes Demirci";
 export const authorTwitter = "@enesdemirci";
 export const ogImageUrl = `${defaultUrl}/og-image.jpg`;
@@ -104,8 +104,29 @@ export const termsOfUseData = [
 ];
 
 export const homeData = {
-    text1: "Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!",
-    text2:
-      "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!",
-  };
-  
+  text1: "Günlük, toplantı ve görevlerinizi tek bir yerde yönetin!",
+  text2:
+    "Pao Planner ile yapılacaklar listenizi oluşturun, saat ekleyin ve yaklaşan görevlerinizi anında görün. Tüm verileriniz cihazınızda şifrelenmiş olarak saklanır, internet gerektirmez ve üçüncü taraflarla paylaşılmaz. Basit, güvenli ve hızlı bir deneyim için şimdi keşfedin!",
+};
+
+
+export const META_DATA = {
+  home: {
+    title: "Paoplanner - Günlük Görev Takibi ve Todo Listesi Uygulaması",
+    description: "Paoplanner, günlük görevlerinizi kolayca takip etmenizi ve todo listeleri oluşturmanızı sağlayan basit ve güvenli bir uygulamadır.",
+    canonical: "https://paoplanner.com",
+    siteName: "Ana Sayfa",
+  },
+  privacyPolicy: {
+    title: "Paoplanner Gizlilik Politikası",
+    description: "Paoplanner uygulamasının veri güvenliği ve gizliliğinizi nasıl koruduğunu açıklayan politikamız.",
+    canonical: "https://paoplanner.com/privacy-policy",
+    siteName: "Gizlilik Politikası",
+  },
+  termsOfUse: {
+    title: "Paoplanner Kullanım Şartları",
+    description: "Paoplanner uygulamasını kullanmadan önce lütfen kullanım şartlarını dikkatlice inceleyin.",
+    canonical: "https://paoplanner.com/terms-of-use",
+    siteName: "Kullanım Şartları",
+  },
+};

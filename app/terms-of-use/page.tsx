@@ -1,6 +1,48 @@
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { termsOfUseData } from "@/constants";
+import { defaultUrl, META_DATA, termsOfUseData } from "@/constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: META_DATA.termsOfUse.title,
+  description: META_DATA.termsOfUse.description.slice(0, 160),
+  alternates: {
+    canonical: META_DATA.termsOfUse.canonical,
+  },
+  openGraph: {
+    title: META_DATA.termsOfUse.title,
+    description: META_DATA.termsOfUse.description,
+    url: META_DATA.termsOfUse.canonical,
+    siteName: META_DATA.termsOfUse.siteName,
+    images: [
+      {
+        url: `${defaultUrl}/og-image.jpeg`,
+        width: 1200,
+        height: 630,
+        alt: META_DATA.termsOfUse.siteName,
+      },
+    ],
+    locale: "tr_TR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: META_DATA.termsOfUse.title,
+    description: META_DATA.termsOfUse.description,
+    images: [`${defaultUrl}/og-image.jpeg`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 const TermsOfUse = () => {
   return (
