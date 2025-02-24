@@ -36,7 +36,7 @@ export const HomeClient = () => {
           {homeData.text1}
         </p>
 
-        <button className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
+        <a href="https://apps.apple.com/tr/app/pao-planner/id6741692813?l=tr" className="flex items-center gap-3 bg-[#e3e4e6] hover:bg-[#d1d2d4] transition-colors py-3 px-4 md:px-6 rounded-xl font-bold text-lg md:text-xl text-[#33363d]">
           <Image
             className="hidden md:block"
             alt="Apple Logo"
@@ -56,7 +56,7 @@ export const HomeClient = () => {
             loading="eager"
           />
           Download for IOS
-        </button>
+        </a>
 
         <Image
           alt="Pao Planner Phone Image"
