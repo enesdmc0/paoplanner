@@ -9,7 +9,7 @@ import {
   siteDescription,
   siteName,
 } from "@/constants";
-
+import { Analytics } from "@vercel/analytics/react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -100,6 +100,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
+      <Analytics />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
     </html>
   );
